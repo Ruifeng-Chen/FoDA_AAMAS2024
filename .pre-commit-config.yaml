@@ -1,0 +1,17 @@
+# version is pinned here, if CI is broken, check if there is a new version
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.283
+    hooks:
+      - id: ruff
+        args: [--fix, --fix-only, --exit-non-zero-on-fix]
+  - repo: https://github.com/hauntsaninja/black-pre-commit-mirror
+    rev: 23.7.0
+    hooks:
+      - id: black
+        # specify workers explicitly to workaround https://github.com/psf/black/issues/2513
+        args: [--line-length=100, --exclude="", --workers=6]
